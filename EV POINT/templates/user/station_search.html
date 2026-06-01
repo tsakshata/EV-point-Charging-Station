@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Station Search</title>
+  <link rel="stylesheet" href="/static/user/station_search.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="icon" href="/static/temp/assets/images/icon.ico" />
+</head>
+
+<body>
+  <!-- HEADER SECTION -->
+  <header>
+    <a href="{{ url_for('home') }}" class="logo">
+      <img src="/static/pic/logo.png" alt="logo" />
+    </a>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <h1>EV Charging Stations Booking</h1>
+    <p><strong>You have selected the following options:</strong></p>
+    <ul>
+      <li><strong>City:</strong> {{ City }}</li>
+      <li><strong>Charging Type:</strong> {{ Charger_type }}</li>
+    </ul>
+
+    <p>Please select a charging station from the list below:</p>
+    <table id="myTable" class="display">
+      <thead>
+        <tr>
+          <th>Station Name</th>
+          <th>City</th>
+          <th>Address</th>
+          <th>Charge Type</th>
+          <th>Available Ports</th>
+          <th>Book</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for station in data %}
+        <tr>
+          <td>{{ station.Station_name }}</td>
+          <td>{{ station.City }}</td>
+          <td>{{ station.Address }}</td>
+          <td>{{ station.Charger_type }}</td>
+          <td>{{ station.Available_ports }}</td>
+          <td>
+            <form action="/booking" method="POST">
+              <input type="hidden" name="Station_name" value="{{ station.Station_name }}">
+              <input type="hidden" name="City" value="{{ station.City }}">
+              <input type="hidden" name="Available_ports" value="{{ station.Available_ports }}">
+              <button type="submit" class="book-now-btn">Book Now</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+
+  <!-- SCRIPTS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(function () {
+      $('#myTable').DataTable({
+        paging: true,
+        searching: true,
+        info: false,
+        columnDefs: [{ orderable: false, targets: [4, 5] }]
+      });
+    });
+  </script>
+</body>
+</html>

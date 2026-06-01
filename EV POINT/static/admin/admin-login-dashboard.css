@@ -1,0 +1,229 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: #fcfcfc;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  background-color: #2C3E50;
+}
+.logo {
+  color: #fff;
+  font-weight: 900;
+}
+.logo img {
+  height: 40px;
+}
+nav ul {
+  display: flex;
+  gap: 10px;
+}
+nav ul li a {
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 1px;
+  display: block;
+  transition: color 0.3s ease;
+}
+nav ul li a:hover {
+  color: #DC7633;
+}
+.cta {
+  background-color: #DC7633;
+  color: #fff;
+}
+.cta:hover {
+  background-color: #D35400;
+  color: #fff;
+}
+
+/* ---------- SIDEBAR ---------- */
+#sidebar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 15rem;
+  min-height: 95vh;
+  max-height: 95vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: margin 0.25s ease-out;
+}
+.sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: -16rem;
+}
+#page-content-wrapper {
+  min-width: 100vw;
+}
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    position: sticky;
+    margin-left: -16rem;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+  #sidebar-toggle-onSidebar,
+  .empty-space-sidebar-clicked {
+    display: none;
+  }
+}
+
+/* ---------- SIDEBAR OVERLAY ---------- */
+.empty-space-sidebar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+}
+.empty-space-sidebar-clicked {
+  display: block;
+  background-color: #333;
+  opacity: 0.8;
+}
+
+/* ---------- TOGGLER ---------- */
+.sidebar-toggler {
+  background: transparent;
+  border: none;
+}
+.sidebar-toggler .icon-bar {
+  width: 22px;
+  height: 2px;
+  background-color: #2a337c;
+  display: block;
+  transition: all 0.25s;
+}
+.middle-bar, .bottom-bar {
+  margin-top: 4px;
+}
+.sidebar-toggler .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+.sidebar-toggler .middle-bar {
+  opacity: 0;
+}
+.sidebar-toggler .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+#wrapper.toggled .sidebar-toggler .top-bar,
+#wrapper.toggled .sidebar-toggler .bottom-bar {
+  transform: rotate(0);
+}
+#wrapper.toggled .sidebar-toggler .middle-bar {
+  opacity: 1;
+}
+
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar {
+  width: 0.25rem;
+}
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 0.25rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* ---------- NAVBAR SCROLL ---------- */
+.nav-link-secondary {
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.25s ease-out;
+}
+.nav-link-secondary:hover {
+  color: #2a337c !important;
+  fill: #2a337c;
+}
+.navbar-underline {
+  width: 100%;
+  height: 0.25rem;
+}
+.navbar-underline::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.25rem;
+  background-color: #fff;
+  transition: all 0.25s ease-out;
+}
+.nav-link-secondary:hover .navbar-underline::after {
+  background-color: #000;
+}
+.scroll, .scroll > .container {
+  white-space: nowrap;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  flex-wrap: nowrap;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  position: sticky;
+  top: 100vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #415161;
+  padding-top: 10px;
+  color: #fff;
+  text-align: center;
+}
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.footer-content h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 3rem;
+}
+.footer-content p {
+  max-width: 500px;
+  margin: 10px auto;
+  line-height: 28px;
+  font-size: 14px;
+}

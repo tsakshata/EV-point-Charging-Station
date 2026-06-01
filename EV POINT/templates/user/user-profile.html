@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>User Profile - EV Charging Station Finder</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/static/temp/assets/images/icon.ico">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- CSS - Combined and minified -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --sidebar-width: 250px;
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Sidebar */
+        #wrapper {
+            margin-top: var(--header-height);
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        #sidebar-wrapper {
+            width: var(--sidebar-width);
+            min-height: 100%;
+            background: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            position: fixed;
+            left: -var(--sidebar-width);
+            transition: left 0.3s ease;
+            z-index: 999;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            left: 0;
+        }
+
+        .sidebar-toggler {
+            background: none;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .icon-bar {
+            width: 25px;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: 0.3s;
+        }
+
+        .list-group-item {
+            border: none;
+            padding: 1rem 1.5rem;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .list-group-item:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Content */
+        #page-content-wrapper {
+            width: 100%;
+            padding: 2rem;
+            transition: margin-left 0.3s ease;
+        }
+
+        #wrapper.toggled #page-content-wrapper {
+            margin-left: var(--sidebar-width);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background: #094760ff;
+        }
+
+        /* Footer */
+        footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 1rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            #page-content-wrapper {
+                padding: 1rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            #wrapper.toggled #page-content-wrapper {
+                margin-left: 0;
+            }
+
+            #sidebar-wrapper {
+                width: 100%;
+                left: -100%;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                left: 0;
+            }
+        }
+
+        /* Loading animation */
+        .btn-loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .btn-loading::after {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            margin-left: -8px;
+            margin-top: -8px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: #ffffff;
+            animation: spin 1s ease infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="{{ url_for('home') }}" class="logo">
+            <img src="/static/pic/logo.png" alt="EV Charging Station Finder Logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('user_find_your_charger') }}">Find Charger</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact_us') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Wrapper -->
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="text-right">
+                <button class="sidebar-toggler" id="sidebar-toggle" aria-label="Toggle sidebar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="/user-dashboard" class="list-group-item">
+                    <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                </a>
+                <a href="/user-profile" class="list-group-item active">
+                    <i class="fas fa-user me-2"></i> Profile
+                </a>
+                <a href="{{ url_for('contact_us') }}" class="list-group-item">
+                    <i class="fas fa-envelope me-2"></i> Contact Us
+                </a>
+                <a href="/logout" class="list-group-item">
+                    <i class="fas fa-sign-out-alt me-2"></i> Logout
+                </a>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <!-- Mobile menu button -->
+            <button class="sidebar-toggler d-md-none mb-3" id="mobile-toggle" aria-label="Toggle menu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Profile Form -->
+            <div class="form-container">
+                <h1><i class="fas fa-user-edit me-2"></i>Update Account Details</h1>
+                <form action="{{ url_for('user_profile') }}" method="post" id="profileForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">New Password</label>
+                        <input type="password" id="password" name="password" minlength="6">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm New Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password">
+                    </div>
+                    
+                    <button type="submit" id="submitBtn">
+                        <i class="fas fa-save me-2"></i>Update Changes
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3><i class="fas fa-charging-station me-2"></i>EV Charging Station Finder</h3>
+            <p>&copy; 2025 EV Charging Station Finder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Sidebar toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const wrapper = document.getElementById('wrapper');
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const mobileToggle = document.getElementById('mobile-toggle');
+            
+            function toggleSidebar() {
+                wrapper.classList.toggle('toggled');
+            }
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', toggleSidebar);
+            }
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', toggleSidebar);
+            }
+            
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768 && wrapper.classList.contains('toggled')) {
+                    if (!e.target.closest('#sidebar-wrapper') && !e.target.closest('.sidebar-toggler')) {
+                        wrapper.classList.remove('toggled');
+                    }
+                }
+            });
+        });
+
+        // Form validation and submission
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Password confirmation check
+            if (password && password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            // Add loading state
+            submitBtn.classList.add('btn-loading');
+            submitBtn.disabled = true;
+        });
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                alert.style.transition = 'opacity 0.5s';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            });
+        }, 5000);
+    </script>
+</body>
+</html>

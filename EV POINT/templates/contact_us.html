@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='contact-us.css') }}" />
+
+  <!-- Icons & fonts -->
+  <link rel="icon" href="{{ url_for('static', filename='temp/assets/images/icon.ico') }}" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+  <!-- ========== Header ========== -->
+  <header>
+    <a href="{{ url_for('home') }}" class="logo">
+      <img src="{{ url_for('static', filename='pic/logo.png') }}" alt="Logo" />
+    </a>
+
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('contact_us') }}">Contact&nbsp;Us</a></li>
+        <li><a href="{{ url_for('login') }}" class="cta">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ========== Contact Form Section ========== -->
+  <section class="contact_us">
+    <h2>Contact&nbsp;Us</h2>
+
+    <form id="contact_usform" action="{{ url_for('contact_us') }}" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Feedback:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <input type="submit" value="Send" />
+    </form>
+  </section>
+
+  {% if message %}
+    <script>alert("{{ message }}");</script>
+  {% endif %}
+
+  <!-- ========== Footer ========== -->
+  <footer>
+    <div class="footer-content">
+      <h3> EV POINT </h3>
+      <p>&copy;&nbsp;2025&nbsp;EV Charging Station Finder. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Optional JS (uncomment if needed) -->
+  <script src="{{ url_for('static', filename='contact-us.js') }}"></script>
+</body>
+</html>

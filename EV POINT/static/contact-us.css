@@ -1,0 +1,230 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* ---------- Base Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: url('/static/pic/p5.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #000;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ---------- Header ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.6s ease-out;
+}
+
+
+.logo img {
+  height: 45px;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  background: #DC7633;
+  color: #fff;
+}
+
+.cta {
+  background: #DC7633;
+  border-radius: 6px;
+}
+
+.cta:hover {
+  background: #D35400;
+}
+
+/* ---------- Contact Section ---------- */
+.contact_us {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  backdrop-filter: blur(4px);
+  animation: fadeInUp 1s ease;
+}
+
+.contact_us h2 {
+  font-size: 2.8rem;
+  color: #0c0b0b;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  letter-spacing: 1px;
+}
+
+/* --- Form Box --- */
+form {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 35px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  animation: slideFade 0.8s ease;
+}
+
+/* --- Input Group --- */
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+  color: #0f0e0e;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: #020101ff;
+  font-size: 1rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #ccc;
+}
+
+input:focus,
+textarea:focus {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* --- Submit Button --- */
+input[type="submit"] {
+  background: linear-gradient(135deg, #4CAF50, #66bb6a);
+  color: #0d0c0c;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 14px 20px;
+  border-radius: 40px;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background: linear-gradient(135deg, #43a047, #388e3c);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Footer ---------- */
+footer {
+  padding: 30px 10%;
+  text-align: center;
+  background-color: rgba(17, 17, 18, 0.1);
+  color: #121213;
+  animation: fadeInUp 1.4s ease-out;
+}
+
+.footer-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.footer-content p {
+  font-size: 17px;
+  font-weight: bold;
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

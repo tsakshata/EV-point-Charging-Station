@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/static/index.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="icon" href="/static/temp/assets/images/icon.ico" />
+  <title>EV POINT</title>
+</head>
+
+<body>
+  <!-- HEADER SECTION -->
+  <header>
+    <a href="{{ url_for('home') }}" class="logo">
+      <img src="/static/pic/logo.png" alt="logo" />
+    </a>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+        <li><a href="{{ url_for('login') }}" class="cta">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <h1>Electric Vehicle Charging Station</h1>
+    <p>Charge your car with clean energy</p>
+  </div>
+
+  <!-- SERVICES SECTION -->
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="card-slider-container">
+      <button class="slider-btn prev">&#10094;</button>
+
+      <div class="card-slider">
+        <div class="card">
+          <img src="/static/pic/p2.jpg" alt="Slide 1">
+          <h3>Fast Charging And All Type Port</h3>
+          <p>Quick and efficient EV charging service,<br>
+            and available for all type charging ports.
+          </br></p>
+        </div>
+        <div class="card">
+          <img src="/static/pic/p1.jpg" alt="Slide 2">
+          <h3>Locate Stations</h3>
+          <p>Find charging stations near your location.</p>
+        </div>
+        <div class="card">
+          <img src="/static/pic/support.jpg" alt="Slide 3">
+          <h3>24/7 Support</h3>
+          <p>Customer assistance available anytime.</p>
+        </div>
+        <div class="card">
+          <img src="/static/pic/p6.jpg" alt="Slide 4">
+          <h3>Eco-Friendly</h3>
+        <p>
+         Electric vehicles help reduce pollution and carbon emissions by using clean renewable energy sources.
+        <br>
+        They support sustainable transportation by driving green and charging smart.
+        <br>
+        We contribute to protecting the environment and ensuring a healthier planet for future generations.
+      </p>
+        </div>
+        <div class="card">
+          <img src="/static/pic/p7.jpg" alt="Slide 5">
+          <h3>Easy Booking</h3>
+          <p>Reserve a charger with just a few clicks.</p>
+          <p>No waitig,no hastel</p>
+        </div>
+      </div>
+
+      <button class="slider-btn next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer>
+    <div class="footer-content">
+      <h3>EV POINT</h3>
+      <p>&copy; 2025 EV Charging Station Finder. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT SECTION -->
+  <script>
+    const slider = document.querySelector('.card-slider');
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const nextBtn = document.querySelector('.slider-btn.next');
+
+    const cardWidth = 340; // Adjust this if you change card size or padding
+
+    prevBtn.addEventListener('click', () => {
+      slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

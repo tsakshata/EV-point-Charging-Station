@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: url('/static/pic/P9.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #000;
+  overflow-x: hidden;
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(97, 94, 94, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.6s ease-out;
+}
+
+
+.logo img {
+  height: 40px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 3px;
+  transition: background 0.3s, color 0.3s;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background: #fff;
+  color: #DC7633;
+}
+
+/* Main Content */
+.container {
+  max-width: 800px;
+  margin: 80px auto;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.25rem;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+/* Form Styling */
+form {
+  text-align: center;
+}
+
+label,
+select,
+button {
+  font-size: 18px;
+  margin: 15px 10px;
+}
+
+select {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #0f0f0f;
+  border-radius: 5px;
+}
+
+select:required {
+  border: 2px solid red;
+}
+
+button {
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+
+footer {
+  padding: 80px 10%;
+  text-align: center;
+  background-color: rgba(17, 17, 18, 0.1);
+  color: #dcdceb;
+  animation: fadeInUp 1.4s ease-out;
+}
+
+.footer-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.footer-content p {
+  font-size: 14px;
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.6;
+}
+

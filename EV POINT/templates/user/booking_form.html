@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EV Charging - Booking</title>
+  <link rel="stylesheet" href="/static/user/book.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <link rel="icon" href="/static/temp/assets/images/icon.ico">
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <!-- HEADER -->
+    <header class="main-header">
+      <div class="header-container">
+        <a href="{{ url_for('home') }}" class="logo">
+          <img src="/static/pic/logo.png" alt="EV Charging Logo">
+        </a>
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+      <!-- SIDEBAR -->
+      <div class="sidebar-wrapper">
+        <div class="sidebar">
+          <div class="sidebar-menu">
+            <a href="/user-dashboard" class="sidebar-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="/user-profile" class="sidebar-item"><i class="fas fa-user"></i> Profile</a>
+            <a href="{{ url_for('user_find_your_charger') }}" class="sidebar-item active"><i class="fas fa-calendar-plus"></i> Book a Slot</a>
+            <a href="/logout" class="sidebar-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOOKING FORM -->
+      <div class="content-wrapper">
+        <div class="booking-card-container">
+          <div class="booking-card">
+            <h1 class="booking-title"><i class="fas fa-calendar-check"></i> Book Your Charging Slot</h1>
+            
+            <form action="/book" method="POST" class="booking-form">
+              <!-- Form content remains the same -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="Station_name"><i class="fas fa-charging-station"></i> Station Name</label>
+                  <input type="text" class="form-control" id="Station_name" name="Station_name" value="{{ request.args.get('Station_name') }}" readonly>
+                </div>
+
+                <div class="form-group">
+                  <label for="City"><i class="fas fa-city"></i> City</label>
+                  <input type="text" class="form-control" id="City" name="City" value="{{ request.args.get('City') }}" readonly>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="Available_ports"><i class="fas fa-plug"></i> Selected Port</label>
+                <input type="text" class="form-control" id="Available_ports" name="Available_ports" value="{{ request.args.get('Available_ports') }}" readonly>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="Booking_date"><i class="far fa-calendar-alt"></i> Booking Date</label>
+                  <input type="date" class="form-control" id="Booking_date" name="Booking_date" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="Time_from"><i class="far fa-clock"></i> Start Time</label>
+                  <input type="time" class="form-control" id="Time_from" name="Time_from" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="Time_to"><i class="fas fa-clock"></i> End Time</label>
+                  <input type="time" class="form-control" id="Time_to" name="Time_to" required>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-book-now">
+                <i class="fas fa-check-circle"></i> Confirm Booking
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <h5>EV Charging Station Finder</h5>
+        <p>&copy; 2025 All Rights Reserved</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Set min date to today
+    document.getElementById('Booking_date').min = new Date().toISOString().split('T')[0];
+    
+    // Form validation
+    document.querySelector('.booking-form').addEventListener('submit', function(e) {
+      const date = document.getElementById("Booking_date").value;
+      const from = document.getElementById("Time_from").value;
+      const to = document.getElementById("Time_to").value;
+
+      if (!date || !from || !to) {
+        e.preventDefault();
+        alert("Please fill all required fields.");
+        return false;
+      }
+
+      if (from >= to) {
+        e.preventDefault();
+        alert("End time must be after start time.");
+        return false;
+      }
+
+      if (!confirm("Are you sure you want to book this slot?")) {
+        e.preventDefault();
+        return false;
+      }
+    });
+  </script>
+</body>
+</html>

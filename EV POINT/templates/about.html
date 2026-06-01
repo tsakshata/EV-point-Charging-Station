@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | EV Charging Station Finder</title>
+
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="/static/about.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="icon" href="/static/temp/assets/images/icon.ico" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <a href="{{ url_for('home') }}" class="logo">
+      <img src="/static/pic/logo.png" alt="EV Finder Logo" />
+    </a>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('find_your_charger') }}">Find Your Charger</a></li>
+        <li><a href="{{ url_for('about') }}" class="active">About</a></li>
+        <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+        <li><a href="{{ url_for('login') }}" class="cta">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section>
+      <h1>About EV Charging Station Finder</h1>
+      <p>
+        EV Charging Station Finder is a web application that helps electric vehicle (EV) drivers locate nearby charging stations. Our mission is to simplify trip planning by ensuring easy access to station availability, types of chargers, and more.
+      </p>
+    </section>
+
+    <section>
+      <h2>How It Works</h2>
+      <p>
+        The platform uses Google Maps API to display real-time charging station data. Users input a location, and the map visualizes nearby stations, including details like charger type, availability, and pricing (if available).
+      </p>
+    </section>
+
+    <section class="team-section">
+  <h2>Our Team</h2>
+  <table class="team-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Position</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John Smith</td>
+        <td>CEO</td>
+      </tr>
+      <tr>
+        <td>Jane Doe</td>
+        <td>COO</td>
+      </tr>
+      <tr>
+        <td>Bob Johnson</td>
+        <td>CTO</td>
+      </tr>
+      <tr>
+        <td>Alice Lee</td>
+        <td>CFO</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+    <!-- Row of Cards -->
+    <section class="row">
+      <div class="container">
+        <p><b>Our Vision</b></p>
+        <p>To create an eco-smart charging ecosystem that supports the growing community of electric vehicle users, while contributing to a cleaner and healthier planet.</p>
+      </div>
+
+      <div class="container">
+        <p><b>Our Promise.</b></p>
+        <p>We’re committed to making your EV journey smooth, efficient, and sustainable — one charge at a time.</p>
+      </div>
+
+      <div class="container">
+        <p><b>What we offer</b></p>
+        <p> We design and operate smart EV charging stations powered by renewable energy sources and intelligent monitoring tools. Whether you're charging at a mall, workplace, highway, or home — our stations are built for speed, safety, and ease of use.</p>
+      </div>
+
+      <div class="container">
+        <p><b>Our Values</b></p>
+        <p>Sustainability – Every charge reduces emissions and supports our planet
+          Innovation – We use the best in clean tech and automation
+          Reliability – Always-on stations with safety-first design
+          Customer Focus – User-friendly tools and fast support
+      </p>
+      </div>
+
+      <div class="container">
+        <p><b> Join the Movement</b></p>
+        <p>We’re building more than stations — we’re building a community of responsible drivers, innovators, and changemakers.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <h3>EV Charging Station Finder</h3>
+      <p>&copy; 2025 EV Charging Station Finder. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
